@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Circus - Circular Carousel</title>
+	<style>
+		body {
+			margin: 0;
+		}
+		
+		.circus-container {
+			width: 1200px;
+		}
+		
+		.circus-slides li {
+			background: #ccc;
+			border: 1px solid #000;
+			height: 200px;
+			list-style: none;
+			transition: all 500ms ease;
+			-webkit-transition: all 500ms ease;
+			width: auto
+		}
+	</style>
+</head>
+<body>
+	<div class="carousel-container">
+		<ul class="circus-slides">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+		</ul>
+	</div>
+
+	<a href="#" class="next">Next</a>
+	<br>
+	<a href="#" class="destroy">Destroy</a>
+	
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="src/circus.js"></script>
+	<script>
+		$(document).ready(function() {
+			carousel = $('.carousel-container').circusCarousel({
+				oddPosition:'bottom',
+				autoPlay: false,
+				initialMotion: 'forward',
+				autoPlayInterval: 3000
+			});
+			
+			$('a.next').on('click', function(e) {
+				e.preventDefault();
+				carousel.forward();
+			});
+			
+			$('a.destroy').on('click', function(e) {
+				e.preventDefault();
+				carousel.destroy();
+			});
+		});
+	</script>
+</body>
+</html>
